@@ -263,6 +263,115 @@ select:focus {
   font-size: 1rem;
 }
 
+/* ==================== CLASSIC THEME ==================== */
+
+.classic-theme {
+  --bg-primary: #f0d9b5;
+  --bg-secondary: #b58863;
+  --text-primary: #333;
+  --accent-color: #769656;
+  --accent-secondary: #baca44;
+  --square-light: #f0d9b5;
+  --square-dark: #b58863;
+  --border-color: #8b7355;
+}
+
+.classic-theme {
+  background: linear-gradient(135deg, #2c1810 0%, #4a3728 100%);
+}
+
+.classic-theme header h1 {
+  background: linear-gradient(135deg, #d4af37, #aa8c3a);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  text-shadow: none;
+}
+
+.classic-theme .board {
+  background: #8b7355;
+  border: 4px solid #5d4a37;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
+}
+
+.classic-theme .square-light {
+  background: var(--square-light);
+}
+
+.classic-theme .square-dark {
+  background: var(--square-dark);
+}
+
+.classic-theme .square.selected {
+  background: rgba(255, 255, 255, 0.4) !important;
+  box-shadow: inset 0 0 20px rgba(255, 255, 255, 0.6);
+}
+
+.classic-theme .square.valid-move {
+  background: rgba(255, 255, 200, 0.3) !important;
+}
+
+.classic-theme .square.capture-move {
+  background: rgba(200, 50, 50, 0.4) !important;
+}
+
+.classic-theme .move-indicator {
+  background: rgba(255, 255, 255, 0.8);
+  box-shadow: 0 0 10px rgba(255, 255, 255, 0.6);
+}
+
+.classic-theme .capture-indicator {
+  border-color: #c83232;
+  box-shadow: 0 0 15px rgba(200, 50, 50, 0.6);
+}
+
+.classic-theme .piece {
+  filter: drop-shadow(2px 2px 4px rgba(0, 0, 0, 0.5));
+}
+
+.classic-theme .stats-panel {
+  background: rgba(45, 35, 25, 0.8);
+  border: 2px solid var(--border-color);
+}
+
+.classic-theme .stat-value {
+  color: #d4af37;
+}
+
+.classic-theme button {
+  background: linear-gradient(135deg, #769656, #5d7a43);
+  box-shadow: 0 4px 15px rgba(118, 150, 86, 0.3);
+}
+
+.classic-theme button:hover {
+  background: linear-gradient(135deg, #8aaa6a, #6d8a53);
+  box-shadow: 0 6px 20px rgba(118, 150, 86, 0.5);
+}
+
+.classic-theme .game-over-overlay {
+  background: rgba(20, 15, 10, 0.95);
+}
+
+.classic-theme .game-over-content {
+  background: rgba(45, 35, 25, 0.95);
+  border: 3px solid var(--border-color);
+}
+
+.classic-theme .square-blocked {
+  background: #2c1810;
+  background-image: repeating-linear-gradient(45deg,
+      #2c1810,
+      #2c1810 10px,
+      #1a0f08 10px,
+      #1a0f08 20px);
+}
+
+.classic-theme .hint-move {
+  box-shadow: inset 0 0 20px rgba(212, 175, 55, 0.6);
+  border: 2px solid #d4af37;
+}
+
+
 .game-over-content {
   text-align: center;
   background: rgba(20, 20, 20, 0.9);

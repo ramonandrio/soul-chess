@@ -18,6 +18,7 @@ function App() {
   const [level, setLevel] = useState(1);
   const [feedback, setFeedback] = useState('');
   const [loading, setLoading] = useState(false);
+  const [theme, setTheme] = useState('neon'); // 'neon' or 'classic'
 
   // Initialize game
   useEffect(() => {
@@ -155,7 +156,7 @@ function App() {
   );
 
   return (
-    <div className="app-container">
+    <div className={`app-container ${theme === 'classic' ? 'classic-theme' : ''}`}>
       <header>
         <h1>Soul Chess</h1>
         <p>Level {level} • Puzzle Mode</p>
@@ -174,6 +175,9 @@ function App() {
         <button onClick={() => startNewGame(false, true)}>Reset Level</button>
         <button onClick={() => startNewGame(false, false)}>New Puzzle</button>
         <button onClick={handleHint} className="hint-btn">Hint</button>
+        <button onClick={() => setTheme(t => t === 'neon' ? 'classic' : 'neon')} className="theme-btn">
+          {theme === 'neon' ? '🎨 Classic' : '✨ Neon'}
+        </button>
       </div>
 
       <div className="stats-panel">
