@@ -8,7 +8,7 @@ const SYMBOLS = {
     [PIECE_TYPES.ROOK]: '♜',
     [PIECE_TYPES.BISHOP]: '♝',
     [PIECE_TYPES.KNIGHT]: '♞',
-    [PIECE_TYPES.PAWN]: '♟',
+    [PIECE_TYPES.PAWN]: '♙',
 };
 
 const Piece = ({ type, color, id, isPlayer }) => {
