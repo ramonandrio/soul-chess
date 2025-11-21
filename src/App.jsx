@@ -168,17 +168,6 @@ function App() {
         <button onClick={handleHint} className="hint-btn">Hint</button>
       </div>
 
-      <div className="stats-panel">
-        <div className="stat-item">
-          <span className="stat-value">{moves} / {targetMoves}</span>
-          <span className="stat-label">Moves</span>
-        </div>
-        <div className="stat-item">
-          <span className="stat-value">{score}</span>
-          <span className="stat-label">Souls</span>
-        </div>
-      </div>
-
       <div style={{ marginBottom: '1rem', height: '1.5rem', color: 'var(--accent-secondary)', fontWeight: 'bold', textTransform: 'uppercase', letterSpacing: '1px' }}>
         {feedback}
       </div>
@@ -209,6 +198,17 @@ function App() {
             </div>
           </div>
         )}
+      </div>
+
+      <div className="stats-panel">
+        <div className="stat-item">
+          <span className="stat-value">{moves} / {targetMoves}</span>
+          <span className="stat-label">Moves</span>
+        </div>
+        <div className="stat-item">
+          <span className="stat-value">{score}</span>
+          <span className="stat-label">Souls</span>
+        </div>
       </div>
     </div>
   );

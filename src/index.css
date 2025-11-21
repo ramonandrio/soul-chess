@@ -743,7 +743,7 @@ select:focus {
 .stats-panel {
   display: flex;
   gap: 2rem;
-  margin-bottom: 2rem;
+  margin-top: 2rem;
   justify-content: center;
 }
 
