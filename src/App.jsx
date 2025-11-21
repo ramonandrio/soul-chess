@@ -163,7 +163,7 @@ function App() {
       </header>
 
       <div className="game-controls">
-        <button onClick={() => startNewGame(false, true)}>Reset Level</button>
+        <button onClick={() => startNewGame(false, true)}>Restart Puzzle</button>
         <button onClick={() => startNewGame(false, false)}>New Puzzle</button>
         <button onClick={handleHint} className="hint-btn">Hint</button>
       </div>
