@@ -18,7 +18,7 @@ function App() {
   const [level, setLevel] = useState(1);
   const [feedback, setFeedback] = useState('');
   const [loading, setLoading] = useState(false);
-  const [theme, setTheme] = useState('neon'); // 'neon' or 'classic'
+  const [theme, setTheme] = useState('classic'); // 'neon' or 'classic'
 
   // Initialize game
   useEffect(() => {
@@ -163,21 +163,9 @@ function App() {
       </header>
 
       <div className="game-controls">
-        <label>
-          Size:
-          <select value={boardSize} onChange={(e) => setBoardSize(Number(e.target.value))}>
-            <option value={3}>3x3</option>
-            <option value={4}>4x4</option>
-            <option value={5}>5x5</option>
-            <option value={6}>6x6</option>
-          </select>
-        </label>
         <button onClick={() => startNewGame(false, true)}>Reset Level</button>
         <button onClick={() => startNewGame(false, false)}>New Puzzle</button>
         <button onClick={handleHint} className="hint-btn">Hint</button>
-        <button onClick={() => setTheme(t => t === 'neon' ? 'classic' : 'neon')} className="theme-btn">
-          {theme === 'neon' ? '🎨 Classic' : '✨ Neon'}
-        </button>
       </div>
 
       <div className="stats-panel">

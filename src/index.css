@@ -207,9 +207,11 @@ select:focus {
 }
 
 .piece {
-  z-index: 2;
-  transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
-  filter: drop-shadow(0 0 5px rgba(0, 0, 0, 0.5));
+  font-size: 3.5rem;
+  cursor: pointer;
+  user-select: none;
+  transition: transform 0.2s ease;
+  filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.3));
 }
 
 .piece:hover {
@@ -329,6 +331,19 @@ select:focus {
   filter: drop-shadow(2px 2px 4px rgba(0, 0, 0, 0.5));
 }
 
+.classic-theme .piece-white {
+  color: #ffffff;
+  /* White for better visibility */
+  filter: drop-shadow(2px 2px 4px rgba(0, 0, 0, 0.8));
+}
+
+.classic-theme .piece-white.player-piece {
+  color: #ffffff;
+  /* White for player piece */
+  filter: drop-shadow(2px 2px 6px rgba(0, 0, 0, 0.9));
+  font-weight: bold;
+}
+
 .classic-theme .stats-panel {
   background: rgba(45, 35, 25, 0.8);
   border: 2px solid var(--border-color);
@@ -371,6 +386,291 @@ select:focus {
   border: 2px solid #d4af37;
 }
 
+/* ==================== MOBILE RESPONSIVE ==================== */
+
+/* Tablets and smaller (max-width: 768px) */
+@media (max-width: 768px) {
+  body {
+    padding: 0.5rem;
+  }
+
+  .app-container {
+    padding: 1rem;
+    max-width: 100%;
+  }
+
+  header h1 {
+    font-size: 2rem;
+  }
+
+  header p {
+    font-size: 0.9rem;
+  }
+
+  .game-controls {
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    justify-content: center;
+  }
+
+  .game-controls label {
+    width: 100%;
+    justify-content: center;
+    font-size: 0.85rem;
+  }
+
+  .game-controls select,
+  .game-controls button {
+    padding: 0.4rem 0.7rem;
+    font-size: 0.8rem;
+    min-height: 36px;
+    /* Smaller touch target for mobile */
+  }
+
+  .stats-panel {
+    gap: 1rem;
+  }
+
+  .stat-item {
+    min-width: 80px;
+  }
+
+  .stat-value {
+    font-size: 1.5rem;
+  }
+
+  .stat-label {
+    font-size: 0.75rem;
+  }
+
+  .board {
+    max-width: 90vw;
+    max-height: 90vw;
+  }
+
+  .square {
+    min-width: 40px;
+    min-height: 40px;
+  }
+
+  .piece {
+    font-size: 2.5rem;
+  }
+
+  .game-over-content h2 {
+    font-size: 2rem;
+  }
+
+  .game-over-content p {
+    font-size: 1rem;
+  }
+
+  .overlay-buttons {
+    flex-direction: column;
+    width: 100%;
+  }
+
+  .overlay-buttons button {
+    width: 100%;
+    min-height: 48px;
+  }
+}
+
+/* Mobile phones (max-width: 480px) */
+@media (max-width: 480px) {
+  body {
+    padding: 0.25rem;
+  }
+
+  .app-container {
+    padding: 0.5rem;
+  }
+
+  header {
+    margin-bottom: 1rem;
+  }
+
+  header h1 {
+    font-size: 1.5rem;
+    margin-bottom: 0.25rem;
+  }
+
+  header p {
+    font-size: 0.8rem;
+  }
+
+  .game-controls {
+    gap: 0.3rem;
+  }
+
+  .game-controls select,
+  .game-controls button {
+    padding: 0.35rem 0.6rem;
+    font-size: 0.75rem;
+    min-height: 32px;
+  }
+
+  .stats-panel {
+    gap: 0.5rem;
+    padding: 0.75rem;
+    margin-bottom: 0.75rem;
+  }
+
+  .stat-item {
+    min-width: 70px;
+  }
+
+  .stat-value {
+    font-size: 1.25rem;
+  }
+
+  .stat-label {
+    font-size: 0.7rem;
+  }
+
+  .board {
+    max-width: 95vw;
+    max-height: 95vw;
+    gap: 2px;
+  }
+
+  .square {
+    min-width: 35px;
+    min-height: 35px;
+  }
+
+  .piece {
+    font-size: 2rem;
+  }
+
+  .move-indicator,
+  .capture-indicator {
+    width: 8px;
+    height: 8px;
+  }
+
+  .hint-indicator {
+    font-size: 1.5rem;
+  }
+
+  .game-over-content {
+    padding: 1.5rem;
+    width: 90%;
+  }
+
+  .game-over-content h2 {
+    font-size: 1.5rem;
+  }
+
+  .game-over-content p {
+    font-size: 0.9rem;
+  }
+
+  .overlay-buttons button {
+    padding: 0.7rem 1.2rem;
+    font-size: 0.9rem;
+  }
+}
+
+/* Small mobile phones (max-width: 360px) */
+@media (max-width: 360px) {
+  header h1 {
+    font-size: 1.25rem;
+  }
+
+  .game-controls select,
+  .game-controls button {
+    font-size: 0.75rem;
+    padding: 0.4rem 0.6rem;
+  }
+
+  .board {
+    gap: 1px;
+  }
+
+  .square {
+    min-width: 30px;
+    min-height: 30px;
+  }
+
+  .piece {
+    font-size: 1.75rem;
+  }
+
+  .stat-value {
+    font-size: 1rem;
+  }
+}
+
+/* Touch device optimizations */
+@media (hover: none) and (pointer: coarse) {
+
+  /* Remove hover effects on touch devices */
+  button:hover {
+    transform: none;
+  }
+
+  .square:hover {
+    transform: none;
+  }
+
+  /* Increase tap targets */
+  button {
+    min-height: 44px;
+    min-width: 44px;
+  }
+
+  /* Prevent text selection on touch */
+  * {
+    -webkit-tap-highlight-color: transparent;
+    -webkit-touch-callout: none;
+    user-select: none;
+  }
+
+  /* But allow selection in specific areas if needed */
+  input,
+  textarea {
+    user-select: text;
+  }
+}
+
+/* Landscape orientation on mobile */
+@media (max-width: 768px) and (orientation: landscape) {
+  .app-container {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    gap: 1rem;
+  }
+
+  header {
+    position: absolute;
+    top: 0.5rem;
+    left: 50%;
+    transform: translateX(-50%);
+    margin: 0;
+  }
+
+  .game-area {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 3rem;
+  }
+
+  .board {
+    max-width: 60vh;
+    max-height: 60vh;
+  }
+
+  .game-controls,
+  .stats-panel {
+    flex-direction: column;
+    width: auto;
+  }
+}
+
 
 .game-over-content {
   text-align: center;
@@ -391,6 +691,47 @@ select:focus {
   background-clip: text;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
+}
+
+.game-controls {
+  display: flex;
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+  flex-wrap: wrap;
+  justify-content: center;
+  /* Center controls */
+  align-items: center;
+}
+
+.game-controls label {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  color: var(--text-primary);
+  font-weight: 500;
+}
+
+.game-controls select {
+  padding: 0.5rem 1rem;
+  background: rgba(255, 255, 255, 0.1);
+  border: 2px solid var(--accent-color);
+  border-radius: 8px;
+  color: var(--text-primary);
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.game-controls select:hover {
+  background: rgba(255, 255, 255, 0.15);
+  border-color: var(--accent-secondary);
+}
+
+.game-area {
+  display: flex;
+  justify-content: center;
+  /* Center board */
+  align-items: center;
+  width: 100%;
 }
 
 .stats-panel {
