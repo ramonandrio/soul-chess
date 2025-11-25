@@ -256,8 +256,8 @@ export const generatePuzzle = (size = 4) => {
     attempts++;
     const board = Array(size).fill(null).map(() => Array(size).fill(null));
 
-    // 1. Place Walls (15-25%)
-    const wallDensity = 0.15 + Math.random() * 0.1;
+    // 1. Place Walls (15-45%)
+    const wallDensity = 0.15 + Math.random() * 0.3;
     const numWalls = Math.floor(size * size * wallDensity);
     for (let i = 0; i < numWalls; i++) {
       const r = Math.floor(Math.random() * size);
