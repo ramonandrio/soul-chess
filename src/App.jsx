@@ -51,7 +51,8 @@ function App() {
 
     // Use setTimeout to allow UI to render loading state
     setTimeout(() => {
-      const { board: newBoard, minMoves, solutionPath: path } = generatePuzzle(boardSize);
+      const currentLevel = nextLevel ? level + 1 : level;
+      const { board: newBoard, minMoves, solutionPath: path } = generatePuzzle(boardSize, currentLevel);
       setBoard(newBoard);
       // Store deep copy of initial board
       setInitialBoard(newBoard.map(row => row.map(p => p ? { ...p } : null)));

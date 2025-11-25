@@ -243,22 +243,47 @@ export const solvePuzzle = (initialBoard) => {
 
 // --- PROCEDURAL GENERATOR ---
 
-export const generatePuzzle = (size = 4) => {
+// Calculate difficulty parameters based on level
+export const getDifficultyParams = (level = 1) => {
+  // Board size grows every 5 levels: 4x4 -> 5x5 -> 6x6 -> 7x7
+  const boardSize = Math.min(4 + Math.floor((level - 1) / 5), 7);
+
+  // Wall density increases gradually (15-25% initially, up to 15-45%)
+  const wallDensityMin = 0.15;
+  const wallDensityMax = Math.min(0.25 + ((level - 1) * 0.02), 0.45);
+
+  // Minimum moves required increases with level
+  const minMovesThreshold = Math.min(2 + Math.floor((level - 1) / 3), 6);
+
+  // Enemy multiplier increases (1.5N initially, up to 2.5N)
+  const enemyMultiplier = Math.min(1.5 + ((level - 1) * 0.1), 2.5);
+
+  return { boardSize, wallDensityMin, wallDensityMax, minMovesThreshold, enemyMultiplier };
+};
+
+export const generatePuzzle = (size = 4, level = 1) => {
   let attempts = 0;
   const maxAttempts = 200; // Reduced from 2000 to prevent browser freeze
 
-  // Difficulty settings based on size
-  const minMovesThreshold = size <= 3 ? 2 : size <= 4 ? 3 : 4;
+  // Get difficulty parameters based on level
+  const difficultyParams = getDifficultyParams(level);
+
+  // Use level-based size if size parameter is default
+  const boardSize = size === 4 ? difficultyParams.boardSize : size;
+
+  // Difficulty settings based on level
+  const minMovesThreshold = difficultyParams.minMovesThreshold;
 
   let bestResult = null;
 
   while (attempts < maxAttempts) {
     attempts++;
-    const board = Array(size).fill(null).map(() => Array(size).fill(null));
+    const board = Array(boardSize).fill(null).map(() => Array(boardSize).fill(null));
 
-    // 1. Place Walls (15-45%)
-    const wallDensity = 0.15 + Math.random() * 0.3;
-    const numWalls = Math.floor(size * size * wallDensity);
+    // 1. Place Walls (dynamic based on level)
+    const wallDensityRange = difficultyParams.wallDensityMax - difficultyParams.wallDensityMin;
+    const wallDensity = difficultyParams.wallDensityMin + Math.random() * wallDensityRange;
+    const numWalls = Math.floor(boardSize * boardSize * wallDensity);
     for (let i = 0; i < numWalls; i++) {
       const r = Math.floor(Math.random() * size);
       const c = Math.floor(Math.random() * size);
@@ -288,9 +313,9 @@ export const generatePuzzle = (size = 4) => {
     const startType = availableTypes[Math.floor(Math.random() * availableTypes.length)];
     board[wr][wc] = createPiece(startType, COLORS.WHITE);
 
-    // 3. Place Black Pieces
-    const minEnemies = size;
-    const maxEnemies = Math.floor(size * 2.5);
+    // 3. Place Black Pieces (dynamic based on level)
+    const minEnemies = boardSize;
+    const maxEnemies = Math.floor(boardSize * difficultyParams.enemyMultiplier);
     const numEnemies = Math.floor(Math.random() * (maxEnemies - minEnemies + 1)) + minEnemies;
 
     let placed = 0;
