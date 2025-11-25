@@ -276,7 +276,16 @@ export const generatePuzzle = (size = 4) => {
 
     if (safety >= 100) continue; // Retry if can't place white
 
-    const startType = Math.random() > 0.5 ? PIECE_TYPES.KNIGHT : PIECE_TYPES.ROOK;
+    // Select any piece type except BLOCKED for starting piece
+    const availableTypes = [
+      PIECE_TYPES.KING,
+      PIECE_TYPES.QUEEN,
+      PIECE_TYPES.ROOK,
+      PIECE_TYPES.BISHOP,
+      PIECE_TYPES.KNIGHT,
+      PIECE_TYPES.PAWN
+    ];
+    const startType = availableTypes[Math.floor(Math.random() * availableTypes.length)];
     board[wr][wc] = createPiece(startType, COLORS.WHITE);
 
     // 3. Place Black Pieces
