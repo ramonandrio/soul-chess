@@ -290,7 +290,7 @@ export const generatePuzzle = (size = 4) => {
 
     // 3. Place Black Pieces
     const minEnemies = size;
-    const maxEnemies = Math.floor(size * 1.5);
+    const maxEnemies = Math.floor(size * 2.5);
     const numEnemies = Math.floor(Math.random() * (maxEnemies - minEnemies + 1)) + minEnemies;
 
     let placed = 0;
